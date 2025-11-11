@@ -1,40 +1,39 @@
 #include <stdio.h>
 
-#define NUMERO_TENTATIVAS 5  // Definição de uma constante com o método 'define'
-
 int main() {
     // informações do cabeçalho do jogo 
     printf("********************\n");
     printf("Jogo de adivinhação!\n");
     printf("*******************\n");
 
-    // informações das configutações do jogo
+    // informações das configurações do jogo
     int numeroSecreto = 42;
+    int ganhou = 0;  // Verificação do jogo em booleano
+    int tentativasDoJogador = 0;
 
-    // loop de tentativas do jogo  x
-    for (int i = 1 ; i <= NUMERO_TENTATIVAS; i++) {
+
+    // loop de infinito do jogo  
+    while ( ganhou == 0 ) {
         
         int chute;
 
-        printf("Tentativa %d de %d:  \n" , i, NUMERO_TENTATIVAS);
+        printf("Tentativa : %d  \n" , tentativasDoJogador + 1 );
         printf("Digite o valor edo seu chute: \n");
         scanf("%d", &chute);
 
         if ( chute < 0) {
             printf("Você não pode digitar números negativos. Tente novamente! \n");
-            i--;
 
             continue;
         }
 
         int acertou = (chute == numeroSecreto);
         int maior = chute > numeroSecreto;
-        int menor = chute < numeroSecreto;
 
         if(acertou) {
             printf("Parabéns, você acaba de acertar o número. \n");
 
-            break;
+            ganhou = 1;
         }
 
         else if (maior) {
@@ -45,8 +44,11 @@ int main() {
             printf("O seu número é menor do que o número secreto. \n");
             }
 
+        tentativasDoJogador += 1; 
+
     }
     printf("Fim de jogo. Obrigado por jogar aqui.\n");
+    printf("Você acertou em %d tentativas" , tentativasDoJogador);
 
     return 0;
 }
