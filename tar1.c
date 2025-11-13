@@ -8,6 +8,7 @@ int main() {
 
     int idadeUsuario; 
     char nomeUsuario;
+    int age;
 
     for (int i = 1; i < 3 ; i++) {
         
