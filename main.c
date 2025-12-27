@@ -21,8 +21,31 @@ int main()
     double pontos_jogo = 1000; 
 
 
-    // loop infinito do jogo  
-    while ( ganhou == 0 ) {
+    int acertou = 0;
+
+    int nivel;
+    printf("Qual o nível de dificuldade?\n");
+    printf("(1) Fácil (2) Médio (3) Difícil\n\n");
+    printf("Escolha: ");
+    scanf("%d", &nivel);
+
+    int numerodetentativas;
+
+    switch(nivel) {
+        case 1:
+            numerodetentativas = 20;
+            break;
+
+        case 2:
+            numerodetentativas = 15;
+            break;
+
+        default:
+            numerodetentativas = 6;
+            break;
+    }
+
+    for(int i = 1; i <= numerodetentativas; i++) {
         
         int chute;
 
@@ -62,9 +85,12 @@ int main()
 
 
     }
+
+
     printf("Fim de jogo. Obrigado por jogar!! .\n");
     printf("Você acertou em %d tentativas \n" , tentativasDoJogador);
     printf("Você fez %.2f pontos, PARABÉNS!! \n" , pontos_jogo);
 
     return 0;
+    
 }
